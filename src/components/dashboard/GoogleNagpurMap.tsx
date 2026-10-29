@@ -649,6 +649,19 @@ export default function GoogleNagpurMap({
 
   // Nearby Services Layer Toggle State - default to none or activeCategoryFilter
   const [showNearbyServicesPanel, setShowNearbyServicesPanel] = useState(false);
+  const [isTouchDevice, setIsTouchDevice] = useState(false);
+
+  useEffect(() => {
+    const checkTouch = () => {
+      setIsTouchDevice(
+        typeof window !== "undefined" &&
+          (window.innerWidth < 768 || "ontouchstart" in window || navigator.maxTouchPoints > 0)
+      );
+    };
+    checkTouch();
+    window.addEventListener("resize", checkTouch, { passive: true });
+    return () => window.removeEventListener("resize", checkTouch);
+  }, []);
   const [serviceCategoryToggles, setServiceCategoryToggles] = useState<Record<ServiceCategory, boolean>>(() => ({
     police: activeServiceCategoryFilter === "police",
     hospital: activeServiceCategoryFilter === "hospital",
@@ -1453,7 +1466,7 @@ export default function GoogleNagpurMap({
         <GoogleMap
           defaultCenter={NAGPUR_CENTER}
           defaultZoom={12.8}
-          gestureHandling="greedy"
+          gestureHandling={isTouchDevice ? "cooperative" : "greedy"}
           disableDefaultUI={false}
           mapTypeControl={false}
           streetViewControl={false}

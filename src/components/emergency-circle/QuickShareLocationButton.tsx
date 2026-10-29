@@ -150,16 +150,18 @@ export function QuickShareLocationButton({
         type="button"
         onClick={handleClick}
         disabled={isLoading}
-        className="relative group flex items-center gap-1.5 rounded-xl border border-rose-500/50 bg-gradient-to-r from-rose-600 via-rose-500 to-rose-600 px-3 py-1.5 text-xs font-black text-white shadow-md shadow-rose-600/30 hover:shadow-rose-600/50 active:scale-95 transition"
+        aria-label="Share Emergency Location"
+        className="relative group flex min-h-[38px] sm:min-h-[40px] items-center gap-1 rounded-xl border border-rose-500/50 bg-gradient-to-r from-rose-600 via-rose-500 to-rose-600 px-2 xs:px-2.5 sm:px-3 py-1.5 text-xs font-black text-white shadow-md shadow-rose-600/30 hover:shadow-rose-600/50 active:scale-95 transition shrink-0"
         title="Instantly dispatch your live location to your Emergency Circle"
       >
         {isLoading ? (
-          <Loader2 className="h-3.5 w-3.5 animate-spin" />
+          <Loader2 className="h-3.5 w-3.5 animate-spin shrink-0" />
         ) : (
-          <Radio className="h-3.5 w-3.5 animate-pulse text-white" />
+          <Radio className="h-3.5 w-3.5 animate-pulse text-white shrink-0" />
         )}
         <span className="hidden md:inline">Share Location</span>
-        <span className="inline md:hidden">SOS Share</span>
+        <span className="hidden sm:inline md:hidden">SOS Share</span>
+        <span className="hidden xs:inline sm:hidden">Share</span>
       </button>
 
       <AlertSentModal

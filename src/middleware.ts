@@ -60,9 +60,10 @@ export async function middleware(request: NextRequest) {
     return NextResponse.next();
   }
 
-  // 6. If user is unauthenticated and visits protected dashboard or private route,
-  // redirect to /login with returnUrl parameter
-  if (!session) {
+  // 6. Only protect authenticated routes (like /emergency-circle management)
+  const isProtectedRoute = pathname.startsWith("/emergency-circle");
+
+  if (!session && isProtectedRoute) {
     const loginUrl = new URL("/login", request.url);
     const returnPath = pathname + search;
     if (returnPath && returnPath !== "/") {
@@ -71,10 +72,12 @@ export async function middleware(request: NextRequest) {
     return NextResponse.redirect(loginUrl);
   }
 
-  // 7. Authenticated user accessing protected route: add user headers and proceed
+  // 7. Proceed with request (add user headers if authenticated session is present)
   const response = NextResponse.next();
-  response.headers.set("x-user-id", session.user.id);
-  response.headers.set("x-user-role", session.user.role);
+  if (session) {
+    response.headers.set("x-user-id", session.user.id);
+    response.headers.set("x-user-role", session.user.role);
+  }
   return response;
 }
 

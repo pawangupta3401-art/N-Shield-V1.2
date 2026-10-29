@@ -285,7 +285,7 @@ export function CommandCenterLayout() {
   const showEmergencyCircle = activeNav === "emergency-circle";
 
   return (
-    <div className="flex h-screen h-[100dvh] max-h-[100dvh] w-full max-w-full overflow-hidden bg-slate-100 dark:bg-slate-950">
+    <div className="flex min-h-screen min-h-[100dvh] w-full max-w-full bg-slate-100 dark:bg-slate-950 lg:h-screen lg:max-h-[100dvh] lg:overflow-hidden">
       
       {/* Desktop Sidebar (Hidden on mobile & tablet) */}
       <div className="hidden lg:flex h-full">
@@ -298,7 +298,7 @@ export function CommandCenterLayout() {
       </div>
 
       {/* Main Content Area */}
-      <div className="flex flex-1 flex-col overflow-hidden min-w-0 w-full max-w-full">
+      <div className="flex flex-1 flex-col min-w-0 w-full max-w-full lg:overflow-hidden">
         <Header
           onOpenMobileNav={() => setMobileNavOpen(true)}
           onOpenEmergencySOS={() => setEmergencySOSModalOpen(true)}
@@ -320,29 +320,29 @@ export function CommandCenterLayout() {
           }}
         />
 
-        <main className="relative flex flex-1 flex-col gap-4 overflow-y-auto p-3 sm:p-5 pb-24 lg:pb-6 min-w-0 w-full">
+        <main className="relative flex flex-1 flex-col gap-4 p-3 sm:p-5 pb-[calc(env(safe-area-inset-bottom,0px)+88px)] lg:pb-6 min-w-0 w-full lg:overflow-y-auto">
           
           {/* Mobile & Tablet Hero & Area Safety Search Bar */}
-          <div className="block lg:hidden relative z-10 rounded-3xl bg-gradient-to-br from-indigo-600 to-indigo-900 p-4 text-white shadow-xl space-y-3">
+          <div className="block lg:hidden relative z-10 rounded-2xl sm:rounded-3xl bg-gradient-to-br from-indigo-600 to-indigo-900 p-3.5 sm:p-4 text-white shadow-xl space-y-3">
             <div className="flex items-center justify-between">
               <div>
                 <span className="rounded-md bg-white/20 px-2 py-0.5 text-[10px] font-extrabold uppercase tracking-wider">
                   Nagpur Citizen Safety
                 </span>
-                <h2 className="text-lg font-black tracking-tight mt-1">
+                <h2 className="text-base sm:text-lg font-black tracking-tight mt-1">
                   How safe is your area right now?
                 </h2>
               </div>
             </div>
 
             {/* Mobile Search Bar */}
-            <div className="pt-1">
+            <div className="pt-0.5 w-full">
               <GlobalSearchBar
                 userLocation={userLocation}
                 zones={zones}
                 services={NAGPUR_ESSENTIAL_SERVICES}
                 newsArticles={realNewsArticles}
-                placeholder="Search hospitals, police, Sitabuldi, Dharampeth..."
+                placeholder="Search hospitals, police, areas..."
                 onSelectZone={handleZoneSelect}
                 onSelectService={(srv) => {
                   setSelectedService(srv);
@@ -357,24 +357,24 @@ export function CommandCenterLayout() {
               />
             </div>
 
-            <div className="flex items-center gap-2 pt-1">
+            <div className="flex flex-col xs:flex-row items-stretch xs:items-center gap-2 pt-1">
               <button
                 type="button"
                 onClick={handleDetectGps}
                 disabled={isDetectingGps}
                 className="flex-1 min-h-[44px] flex items-center justify-center gap-2 rounded-xl bg-white text-indigo-900 px-3 py-2 text-xs font-bold shadow-sm active:scale-95 transition"
               >
-                <Crosshair className={`h-4 w-4 text-indigo-600 ${isDetectingGps ? "animate-spin" : ""}`} />
-                <span>{isDetectingGps ? "Locating..." : "📍 Locate Around Me"}</span>
+                <Crosshair className={`h-4 w-4 text-indigo-600 shrink-0 ${isDetectingGps ? "animate-spin" : ""}`} />
+                <span className="truncate">{isDetectingGps ? "Locating..." : "📍 Locate Around Me"}</span>
               </button>
 
               <button
                 type="button"
                 onClick={() => setSafeRouteModalOpen(true)}
-                className="min-h-[44px] flex items-center justify-center gap-1.5 rounded-xl bg-white/20 hover:bg-white/30 text-white px-3.5 py-2 text-xs font-bold active:scale-95 transition"
+                className="xs:w-auto min-h-[44px] flex items-center justify-center gap-1.5 rounded-xl bg-white/20 hover:bg-white/30 text-white px-3.5 py-2 text-xs font-bold active:scale-95 transition"
                 title="Safe Route Planner"
               >
-                <Navigation className="h-4 w-4" />
+                <Navigation className="h-4 w-4 shrink-0" />
                 <span>Safe Route</span>
               </button>
             </div>
@@ -425,7 +425,7 @@ export function CommandCenterLayout() {
                   id="safety-map-section"
                   className="relative flex w-full lg:w-[60%] flex-col min-w-0 z-20"
                 >
-                  <div className="relative flex-1 rounded-2xl sm:rounded-3xl border border-slate-200/80 bg-white shadow-[0_2px_8px_rgba(0,0,0,0.04)] h-[440px] sm:h-[500px] lg:h-full min-h-[420px] sm:min-h-[500px]">
+                  <div className="relative flex-1 rounded-2xl sm:rounded-3xl border border-slate-200/80 bg-white shadow-[0_2px_8px_rgba(0,0,0,0.04)] h-[380px] xs:h-[420px] sm:h-[500px] lg:h-full min-h-[360px] xs:min-h-[400px] sm:min-h-[500px]">
                     
                     {/* Main Google Maps Component */}
                     <GoogleNagpurMap

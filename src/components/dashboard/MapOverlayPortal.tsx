@@ -41,15 +41,18 @@ export function MapOverlayPortal({
 }: MapOverlayPortalProps) {
   const [mounted, setMounted] = useState(false);
   const [position, setPosition] = useState<{
-    top: number;
+    top?: number;
+    bottom?: number | string;
     left: number;
     width: number;
     maxHeight: number;
+    isMobile: boolean;
   }>({
     top: 80,
     left: 24,
     width: 380,
     maxHeight: 650,
+    isMobile: false,
   });
 
   const updatePosition = useCallback(() => {
@@ -59,14 +62,15 @@ export function MapOverlayPortal({
     const vh = window.innerHeight;
     const mapRect = mapContainerRef.current?.getBoundingClientRect() || null;
 
-    // Small Mobile Viewports (< 640px)
+    // Small Mobile Viewports (< 640px) — Render as compact bottom sheet
     if (vw < 640) {
-      const width = Math.min(vw - 20, 420);
+      const width = Math.min(vw - 20, 440);
       const left = Math.max(10, Math.round((vw - width) / 2));
-      const top = mapRect ? Math.max(68, Math.min(Math.round(mapRect.top + 8), vh - 380)) : 72;
-      const maxHeight = Math.max(320, vh - top - 12);
+      const maxHeight = Math.min(380, Math.round(vh * 0.55));
+      // Anchor above the fixed bottom navigation bar (nav height + safe-area)
+      const bottom = "calc(env(safe-area-inset-bottom, 0px) + 68px)";
 
-      setPosition({ top, left, width, maxHeight });
+      setPosition({ bottom, left, width, maxHeight, isMobile: true });
       return;
     }
 
@@ -135,7 +139,7 @@ export function MapOverlayPortal({
 
     const maxHeight = Math.max(340, vh - top - 16);
 
-    setPosition({ top, left, width, maxHeight });
+    setPosition({ top, left, width, maxHeight, isMobile: false });
   }, [mapContainerRef, clickLocation, targetWidth, topOffset, align]);
 
   useEffect(() => {
@@ -177,21 +181,38 @@ export function MapOverlayPortal({
   }
 
   return createPortal(
-    <div
-      id={id}
-      style={{
-        position: "fixed",
-        top: `${position.top}px`,
-        left: `${position.left}px`,
-        width: `${position.width}px`,
-        maxHeight: `${position.maxHeight}px`,
-        zIndex: 9999,
-      }}
-      className={`pointer-events-auto transition-all duration-200 animate-in fade-in zoom-in-98 flex flex-col ${className}`}
-      onClick={(e) => e.stopPropagation()}
-    >
-      {children}
-    </div>,
+    <>
+      {position.isMobile && (
+        <div
+          className="fixed inset-0 z-30 bg-slate-950/40 backdrop-blur-xs transition-opacity animate-in fade-in"
+          onClick={onClose}
+          aria-hidden="true"
+        />
+      )}
+      <div
+        id={id}
+        style={{
+          position: "fixed",
+          ...(position.isMobile
+            ? { bottom: position.bottom }
+            : { top: `${position.top}px` }),
+          left: `${position.left}px`,
+          width: `${position.width}px`,
+          maxHeight: `${position.maxHeight}px`,
+          zIndex: 35,
+        }}
+        className={`pointer-events-auto transition-all duration-200 ${
+          position.isMobile
+            ? "animate-in fade-in slide-in-from-bottom-6"
+            : "animate-in fade-in zoom-in-98"
+        } flex flex-col ${className}`}
+        onClick={(e) => e.stopPropagation()}
+      >
+        <div className="flex-1 overflow-y-auto min-h-0">
+          {children}
+        </div>
+      </div>
+    </>,
     document.body
   );
 }

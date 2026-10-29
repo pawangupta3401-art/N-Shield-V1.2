@@ -217,8 +217,8 @@ export function SafetyAssistant({
         aria-label="AI Safety Assistant"
         className={`fixed z-50 transition-all duration-300 ease-in-out shadow-2xl flex flex-col border border-slate-200/90 dark:border-slate-800 bg-slate-50/95 dark:bg-slate-950/95 backdrop-blur-md overflow-hidden ${
           isMinimized
-            ? "bottom-4 right-4 w-72 h-14 rounded-2xl"
-            : "bottom-0 right-0 sm:bottom-4 sm:right-4 w-full h-[100dvh] sm:h-[680px] sm:max-h-[90vh] sm:w-[480px] sm:rounded-3xl"
+            ? "bottom-[calc(env(safe-area-inset-bottom,0px)+72px)] sm:bottom-4 right-3 sm:right-4 w-[calc(100vw-24px)] sm:w-72 max-w-sm h-14 rounded-2xl"
+            : "inset-0 sm:inset-auto sm:bottom-4 sm:right-4 w-full h-[100dvh] sm:h-[680px] sm:max-h-[90vh] sm:w-[480px] sm:rounded-3xl"
         }`}
       >
         {/* Header Bar */}
@@ -389,7 +389,7 @@ export function SafetyAssistant({
             </div>
 
             {/* Message Input Form */}
-            <div className="shrink-0 border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-2.5 sm:p-3">
+            <div className="shrink-0 border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-2.5 sm:p-3 pb-[max(env(safe-area-inset-bottom,0px),12px)] sm:pb-3">
               <form
                 onSubmit={(e) => {
                   e.preventDefault();

@@ -66,12 +66,12 @@ export function QuickHelpBar({
     <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-2.5 rounded-2xl border border-slate-200/90 dark:border-slate-800 bg-white/90 dark:bg-slate-900/90 p-2.5 shadow-xs backdrop-blur-md">
       
       {/* Title */}
-      <div className="flex items-center justify-between sm:justify-start gap-2 px-1">
-        <div className="flex items-center gap-2">
-          <span className="flex h-6 w-6 items-center justify-center rounded-lg bg-rose-500 text-white animate-pulse">
+      <div className="flex items-center justify-between sm:justify-start gap-2 px-1 min-w-0">
+        <div className="flex items-center gap-2 min-w-0">
+          <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-lg bg-rose-500 text-white animate-pulse">
             <AlertCircle className="h-3.5 w-3.5" />
           </span>
-          <span className="text-xs font-black uppercase tracking-wider text-slate-900 dark:text-slate-100">
+          <span className="text-xs font-black uppercase tracking-wider text-slate-900 dark:text-slate-100 truncate">
             Need Help?
           </span>
         </div>
@@ -80,7 +80,8 @@ export function QuickHelpBar({
         <button
           type="button"
           onClick={onCallEmergency112}
-          className="flex sm:hidden items-center gap-1 rounded-xl bg-rose-600 px-3 py-1.5 text-xs font-black text-white shadow-xs active:scale-95 transition"
+          aria-label="Emergency SOS 112"
+          className="flex sm:hidden shrink-0 items-center gap-1 rounded-xl bg-rose-600 px-2.5 py-1.5 text-xs font-black text-white shadow-xs active:scale-95 transition"
         >
           <PhoneCall className="h-3.5 w-3.5" />
           <span>SOS 112</span>
@@ -88,7 +89,7 @@ export function QuickHelpBar({
       </div>
 
       {/* Quick Action Buttons Grid (2-column on mobile, flex on desktop) */}
-      <div className="grid grid-cols-2 sm:flex sm:flex-1 sm:flex-wrap items-center gap-2 min-w-0">
+      <div className="grid grid-cols-1 xs:grid-cols-2 sm:flex sm:flex-1 sm:flex-wrap items-center gap-2 min-w-0">
         {quickItems.map((item) => (
           <button
             key={item.category}
@@ -111,10 +112,17 @@ export function QuickHelpBar({
           <button
             type="button"
             onClick={onOpenDirectory}
-            className="col-span-2 sm:col-auto flex min-h-[44px] items-center justify-center gap-1.5 rounded-xl border border-indigo-200 dark:border-indigo-800 bg-indigo-50 dark:bg-indigo-950/60 px-3 py-2 text-xs font-bold text-indigo-700 dark:text-indigo-300 shadow-2xs hover:bg-indigo-100 dark:hover:bg-indigo-900/60 active:scale-95 transition shrink-0"
+            className="flex min-h-[44px] flex-1 sm:min-w-[140px] items-center justify-between gap-1.5 rounded-xl border border-indigo-200 dark:border-indigo-800 bg-indigo-50/80 dark:bg-indigo-950/60 px-3 py-2 text-left shadow-2xs hover:bg-indigo-100 dark:hover:bg-indigo-900/60 active:scale-95 transition"
             title="Open Complete Nagpur Emergency Directory & PDF Dossier"
           >
-            <span>📋 Emergency Directory</span>
+            <div>
+              <div className="text-xs font-bold text-indigo-950 dark:text-indigo-100 leading-tight">
+                📋 Directory
+              </div>
+              <div className="text-[10px] font-semibold text-indigo-600 dark:text-indigo-400 hover:underline">
+                View all →
+              </div>
+            </div>
           </button>
         )}
 
@@ -122,10 +130,17 @@ export function QuickHelpBar({
           <button
             type="button"
             onClick={onOpenSafeRoute}
-            className="col-span-2 sm:col-auto flex min-h-[44px] items-center justify-center gap-1.5 rounded-xl border border-emerald-300 dark:border-emerald-800 bg-emerald-50 dark:bg-emerald-950/60 px-3 py-2 text-xs font-bold text-emerald-700 dark:text-emerald-300 shadow-2xs hover:bg-emerald-100 dark:hover:bg-emerald-900/60 active:scale-95 transition shrink-0"
+            className="flex min-h-[44px] flex-1 sm:min-w-[140px] items-center justify-between gap-1.5 rounded-xl border border-emerald-300 dark:border-emerald-800 bg-emerald-50/80 dark:bg-emerald-950/60 px-3 py-2 text-left shadow-2xs hover:bg-emerald-100 dark:hover:bg-emerald-900/60 active:scale-95 transition"
             title="Open Dynamic Safe Route Reconstruction Planner"
           >
-            <span>🗺️ Safe Route</span>
+            <div>
+              <div className="text-xs font-bold text-emerald-950 dark:text-emerald-100 leading-tight">
+                🗺️ Safe Route
+              </div>
+              <div className="text-[10px] font-semibold text-emerald-600 dark:text-emerald-400 hover:underline">
+                Plan path →
+              </div>
+            </div>
           </button>
         )}
 
@@ -133,6 +148,7 @@ export function QuickHelpBar({
         <button
           type="button"
           onClick={onCallEmergency112}
+          aria-label="Dial National Emergency 112"
           className="hidden sm:flex min-h-[44px] items-center gap-1.5 rounded-xl bg-rose-600 px-3.5 py-2 text-xs font-black text-white shadow-xs transition hover:bg-rose-700 active:scale-95 shrink-0"
           title="Dial National Emergency 112"
         >
