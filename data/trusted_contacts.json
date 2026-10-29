@@ -1,0 +1,51 @@
+[
+  {
+    "id": "ct_demo_parent",
+    "userId": "usr-citizen-01",
+    "name": "Dr. Suresh Deshmukh",
+    "countryCode": "+91",
+    "phoneNumber": "9822345678",
+    "normalizedPhone": "+919822345678",
+    "relationship": "Family",
+    "verificationStatus": "verified",
+    "createdAt": "2026-10-29T00:42:10.079Z",
+    "updatedAt": "2026-10-29T00:42:10.079Z"
+  },
+  {
+    "id": "ct_demo_sibling",
+    "userId": "usr-citizen-01",
+    "name": "Pooja Deshmukh",
+    "countryCode": "+91",
+    "phoneNumber": "9422890123",
+    "normalizedPhone": "+919422890123",
+    "relationship": "Family",
+    "verificationStatus": "verified",
+    "createdAt": "2026-10-29T00:42:10.079Z",
+    "updatedAt": "2026-10-29T00:42:10.079Z"
+  },
+  {
+    "id": "ct_demo_friend",
+    "userId": "usr-citizen-01",
+    "name": "Amit Verma",
+    "countryCode": "+91",
+    "phoneNumber": "9765432109",
+    "normalizedPhone": "+919765432109",
+    "relationship": "Friend",
+    "verificationStatus": "pending",
+    "createdAt": "2026-10-29T00:42:10.079Z",
+    "updatedAt": "2026-10-29T00:42:10.079Z"
+  },
+  {
+    "id": "ct_4d83e73d-5f53-4b28-b3e0-1237cdf28a8c",
+    "userId": "usr-citizen-01",
+    "name": "mother",
+    "countryCode": "+91",
+    "phoneNumber": "9766852008",
+    "normalizedPhone": "+919766852008",
+    "relationship": "Family",
+    "verificationStatus": "verified",
+    "createdAt": "2026-10-29T00:54:17.922Z",
+    "updatedAt": "2026-10-29T00:54:33.984Z",
+    "verificationAttempts": 0
+  }
+]

@@ -1,0 +1,59 @@
+[
+  {
+    "id": "usr-officer-01",
+    "name": "Inspector A. Sharma",
+    "email": "officer@nshield.nagpur.gov.in",
+    "passwordHash": "pbkdf2:100000:c08097714ca95807549bc4168b1ca946:cdb799debd766da39281c9113d85b9d8a59121d1e971c42cf6dbe1fb3993904885b252cda8d36836913f644e37a412bd5a41892afe8fa0d4fe67db05f1d81b7d",
+    "role": "officer",
+    "badgeNumber": "NGP-PD-4091",
+    "emailVerified": true,
+    "createdAt": "2026-10-28T19:52:45.449Z",
+    "updatedAt": "2026-10-28T19:52:45.449Z",
+    "phone": "0712-2561222",
+    "lastLoginAt": "2026-10-28T20:06:02.779Z"
+  },
+  {
+    "id": "usr-citizen-01",
+    "name": "Rahul Deshmukh",
+    "email": "citizen@nshield.nagpur.gov.in",
+    "passwordHash": "pbkdf2:100000:f31deed3624b621c1479215b870e63f3:394b9131b9ccba609a9766ce933a665197d7eab8d8c31ad400f1322329bd826a9c8e1670bd7954c1b2f401c789d3318ee28fe07f08f8adc9fe95f96ffc5497f7",
+    "role": "citizen",
+    "emailVerified": true,
+    "createdAt": "2026-10-28T19:52:45.449Z",
+    "updatedAt": "2026-10-28T19:52:45.449Z",
+    "phone": "+91 98220 12345",
+    "lastLoginAt": "2026-10-29T00:42:06.319Z"
+  },
+  {
+    "id": "usr-admin-01",
+    "name": "N-SHIELD Central Admin",
+    "email": "admin@nshield.nagpur.gov.in",
+    "passwordHash": "pbkdf2:100000:020d2d251874e61f69f60bcf7f7f69c1:75309ab6b21e50ddf0825775364af18c22ea941b6782105a48fc7f0490e78b911115f88b644ae6c358d54e60a093aab33fbe8ffdbbb7b60f2acf24ef0ca70c19",
+    "role": "admin",
+    "emailVerified": true,
+    "createdAt": "2026-10-28T19:52:45.449Z",
+    "updatedAt": "2026-10-28T19:52:45.449Z"
+  },
+  {
+    "id": "usr-1d080609-500a-424c-bfa9-fa1c18364734",
+    "name": "Rajesh Sharma",
+    "email": "citizen.1310@test.nagpur.in",
+    "passwordHash": "pbkdf2:100000:7ca183ae6549b21728b3cfc9e84aeb99:32fd4dcb95d682ec4fa483a7c6b67754a4d720c3e50fd530b86e549c7631eade0b4e4a9245d03c117e86c496f01c8edfaeac9748fc8d39d4e20035207d6d0668",
+    "role": "citizen",
+    "emailVerified": true,
+    "createdAt": "2026-10-28T20:03:54.258Z",
+    "updatedAt": "2026-10-28T20:03:54.258Z",
+    "phone": "+91 98765 43210"
+  },
+  {
+    "id": "usr-7e405394-da02-4982-82d5-02947af21237",
+    "name": "Rajesh Sharma",
+    "email": "citizen.1148@test.nagpur.in",
+    "passwordHash": "pbkdf2:100000:6d38f568c3e5a97e85ea56cb769a4251:71df1be46f4b0dfae561ba6a3fe7d8e3ff991ea0dac5630ab947a32442b1667ce4e4b9a68cbff48cbe5e4fbc50a2f5a74568d21e0910c129e2239aed44e97b8d",
+    "role": "citizen",
+    "emailVerified": true,
+    "createdAt": "2026-10-28T20:06:14.302Z",
+    "updatedAt": "2026-10-28T20:06:14.302Z",
+    "phone": "+91 98765 43210"
+  }
+]

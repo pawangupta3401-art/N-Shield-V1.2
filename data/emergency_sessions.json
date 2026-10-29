@@ -1,0 +1,50 @@
+[
+  {
+    "id": "sesh_cb89acdf-bc23-4e5e-8435-41f143734483",
+    "token": "ff435bbd7c872c7346f6de6ac24cdf6c8f21f54016a987c6",
+    "userId": "usr-citizen-01",
+    "userName": "Rahul Deshmukh",
+    "status": "stopped",
+    "startedAt": "2026-10-29T00:42:32.327Z",
+    "expiresAt": "2026-10-29T01:27:32.327Z",
+    "currentLocation": {
+      "latitude": 21.148,
+      "longitude": 79.091,
+      "accuracy": 8,
+      "timestamp": "2026-10-29T00:42:37.927Z",
+      "speed": null,
+      "heading": null
+    },
+    "locationHistory": [
+      {
+        "latitude": 21.1458,
+        "longitude": 79.0882,
+        "accuracy": 12,
+        "timestamp": "2026-10-29T00:42:32.326Z"
+      },
+      {
+        "latitude": 21.148,
+        "longitude": 79.091,
+        "accuracy": 8,
+        "timestamp": "2026-10-29T00:42:37.927Z",
+        "speed": null,
+        "heading": null
+      }
+    ],
+    "contactsNotified": [
+      {
+        "contactId": "ct_65c7ef4b-6538-475e-946f-9ac82cc62081",
+        "contactName": "Ramesh Deshmukh",
+        "phone": "+919822802157",
+        "status": "sent",
+        "messageId": "mock_alert_1793234552847_ct_65",
+        "channel": "mock_sms",
+        "sentAt": "2026-10-29T00:42:32.847Z"
+      }
+    ],
+    "alertMessage": "EMERGENCY ALERT: Rahul Deshmukh has requested assistance and is sharing their live location with you through N-SHIELD. View their location: http://localhost:3000/live-share/ff435bbd7c872c7346f6de6ac24cdf6c8f21f54016a987c6. Alert time: 06:12:32 am IST.",
+    "shareUrl": "http://localhost:3000/live-share/ff435bbd7c872c7346f6de6ac24cdf6c8f21f54016a987c6",
+    "lastUpdatedAt": "2026-10-29T00:42:40.853Z",
+    "stoppedAt": "2026-10-29T00:42:40.853Z"
+  }
+]
