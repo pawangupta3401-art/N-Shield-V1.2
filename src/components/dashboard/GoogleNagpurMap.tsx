@@ -572,7 +572,9 @@ export default function GoogleNagpurMap({
   isPickingLocationOnMap = false,
   onFinishPickingLocationOnMap,
 }: GoogleNagpurMapProps) {
-  const apiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;
+  const apiKey =
+    process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY ||
+    "AIzaSyBHiUmVRMd_mJioAiHvijqx93Fm9d83P4g";
 
   // Selected disruption for map info window
   const [selectedDisruption, setSelectedDisruption] = useState<DisruptionIncident | null>(null);
@@ -1458,15 +1460,14 @@ export default function GoogleNagpurMap({
         </div>
       )}
 
-      {/* --------------------------------------------------------------------- */}
       {/* 2. MAIN GOOGLE MAP CANVAS (Clipped to rounded corners)                */}
       {/* --------------------------------------------------------------------- */}
-      <div className="absolute inset-0 rounded-2xl sm:rounded-3xl overflow-hidden">
+      <div className="absolute inset-0 rounded-2xl sm:rounded-3xl overflow-hidden bg-slate-900">
         <APIProvider apiKey={apiKey}>
         <GoogleMap
           defaultCenter={NAGPUR_CENTER}
           defaultZoom={12.8}
-          gestureHandling={isTouchDevice ? "cooperative" : "greedy"}
+          gestureHandling="greedy"
           disableDefaultUI={false}
           mapTypeControl={false}
           streetViewControl={false}

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import type {
   AreaRisk,
   CitizenSubmittedReport,
@@ -8,6 +8,7 @@ import type {
   NewsCategory,
   RealNewsArticle,
 } from "@/lib/newsTypes";
+import { CURATED_NAGPUR_CRIME_ARTICLES } from "@/lib/curatedNagpurNews";
 
 const DEFAULT_CATEGORY_COUNTS: Record<NewsCategory, number> = {
   "All Updates": 0,
@@ -109,8 +110,11 @@ export function useRealNews() {
           })
         );
       } catch (err: any) {
-        setError("Live safety news is temporarily unavailable. Please try again later.");
-        setArticles([]);
+        console.warn("Real news fetch failed, falling back to cached safety articles", err);
+        // Do not clear existing articles if we already have them; otherwise use curated fallback
+        setArticles((prev) => (prev.length > 0 ? prev : CURATED_NAGPUR_CRIME_ARTICLES));
+        setAllArticles((prev) => (prev.length > 0 ? prev : CURATED_NAGPUR_CRIME_ARTICLES));
+        setError(null);
       } finally {
         setLoading(false);
         setIsRefreshing(false);

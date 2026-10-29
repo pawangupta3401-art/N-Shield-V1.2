@@ -60,12 +60,15 @@ import { NAGPUR_CRIME_POLYGONS } from "@/lib/nagpurPolygons";
 const GoogleNagpurMap = dynamic(() => import("./GoogleNagpurMap"), {
   ssr: false,
   loading: () => (
-    <div className="flex h-full min-h-[420px] items-center justify-center bg-slate-900">
-      <div className="flex flex-col items-center gap-3">
-        <div className="h-10 w-10 animate-spin rounded-full border-2 border-indigo-200 border-t-indigo-600" />
-        <p className="text-xs font-semibold text-slate-400">
+    <div className="flex h-full w-full min-h-[360px] xs:min-h-[400px] sm:min-h-[500px] items-center justify-center rounded-2xl sm:rounded-3xl bg-slate-900 border border-slate-800 shadow-inner">
+      <div className="flex flex-col items-center gap-3 p-6 text-center">
+        <div className="h-10 w-10 animate-spin rounded-full border-3 border-indigo-500/30 border-t-indigo-500 shadow-md" />
+        <p className="text-xs font-bold text-slate-300">
           Loading Google Maps Safety Intelligence…
         </p>
+        <span className="text-[10px] text-slate-500 font-medium">
+          Nagpur Live Crime & Facility Radar
+        </span>
       </div>
     </div>
   ),
@@ -423,7 +426,7 @@ export function CommandCenterLayout() {
                 {/* Left Side (Map): Responsive Height & Nearly Full Width on Mobile */}
                 <div
                   id="safety-map-section"
-                  className="relative flex w-full lg:w-[60%] flex-col min-w-0 z-20"
+                  className="relative flex w-full lg:w-[60%] flex-col min-w-0 z-20 scroll-mt-16 sm:scroll-mt-20"
                 >
                   <div className="relative flex-1 rounded-2xl sm:rounded-3xl border border-slate-200/80 bg-white shadow-[0_2px_8px_rgba(0,0,0,0.04)] h-[380px] xs:h-[420px] sm:h-[500px] lg:h-full min-h-[360px] xs:min-h-[400px] sm:min-h-[500px]">
                     
