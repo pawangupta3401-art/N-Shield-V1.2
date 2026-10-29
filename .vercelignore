@@ -1,0 +1,16 @@
+# Documentation and generation scripts
+/*.pdf
+/*.pptx
+/*.doc
+/*.html
+/*.py
+/*.csv
+/nagpur_emergency_services.json
+/generate_*.js
+/nagpur_directory_builder.py
+
+# Tests and scratch
+/scratch/
+test.pptx
+test_line.pptx
+
